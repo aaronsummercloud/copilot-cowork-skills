@@ -1,0 +1,69 @@
+/* TEMPLATE: tokens.css, the design system as CSS custom properties.
+   Used by: visual-design-studio. Paste this into the <style> block of every page, then replace every
+   {{placeholder}} with the values from DESIGN.md. Components may use ONLY these tokens:
+   scripts/vds.py lint flags raw hex colors outside :root.
+   Rules: 1 accent, saturation under 80%, no pure #000. Every text/surface pair must reach 4.5:1
+   (3:1 for large text); the linter computes this. Dark values are designed separately, not inverted. */
+:root {
+  color-scheme: light;
+  /* Color roles (name them by job, not hue) */
+  --surface: {{#hex}};          /* page background */
+  --surface-raised: {{#hex}};   /* cards, panels: one step from surface */
+  --surface-sunken: {{#hex}};   /* wells, code, table stripes */
+  --ink: {{#hex}};              /* primary text: at least 7:1 on surface */
+  --ink-muted: {{#hex}};        /* secondary text: at least 4.5:1 on surface */
+  --line: {{#hex}};             /* hairlines and dividers */
+  --accent: {{#hex}};           /* the one accent: CTAs, focus, the single highlight */
+  --accent-ink: {{#hex}};       /* text placed ON the accent: at least 4.5:1 */
+  --chart-neutral: {{#hex}};    /* "everything else" in highlight charts (vds.py chart) */
+  --chart-2: {{#hex}};          /* second series: at least 3:1 against --surface */
+  --focus: var(--accent);
+
+  /* Type: one or two families; list the fallbacks the preview will actually have */
+  --font-display: {{"Display Family"}}, {{fallback}}, system-ui, sans-serif;
+  --font-body: {{"Body Family"}}, {{fallback}}, system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Code", Consolas, monospace;
+
+  /* Fluid type scale (ratio ~1.25 body, steeper for display). clamp(min, preferred, max) */
+  --step--1: clamp(0.83rem, 0.8rem + 0.15vw, 0.9rem);
+  --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  --step-1: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
+  --step-2: clamp(1.56rem, 1.38rem + 0.9vw, 2.1rem);
+  --step-3: clamp(1.95rem, 1.6rem + 1.75vw, 3rem);
+  --step-4: clamp(2.44rem, 1.8rem + 3.2vw, 4.5rem);
+  --step-5: clamp(3.05rem, 2rem + 5.2vw, 6.5rem);
+  --leading-tight: 1.05;
+  --leading-body: 1.55;
+  --measure: 65ch;
+
+  /* Space: one scale, used everywhere (4px base) */
+  --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem;
+  --space-5: 1.5rem; --space-6: 2rem; --space-7: 3rem; --space-8: 4.5rem;
+  --space-section: clamp(4.5rem, 3rem + 7vw, 9rem);
+  --gutter: clamp(1rem, 0.5rem + 2.5vw, 2.5rem);
+  --container: 1240px;
+
+  /* Shape: pick ONE radius family for the whole page (sharp 0-2px / soft 12-16px / pill) */
+  --radius-s: {{px}}; --radius-m: {{px}}; --radius-l: {{px}}; --radius-pill: 999px;
+  --shadow: 0 1px 2px {{tinted-shadow-rgba}}, 0 12px 32px -12px {{tinted-shadow-rgba}};
+
+  /* Motion (ui-animation / animate skills): strong ease-out, never ease-in for entrances */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-move: cubic-bezier(0.25, 1, 0.5, 1);
+  --dur-1: 150ms; --dur-2: 250ms; --dur-3: 400ms; --dur-4: 700ms;
+}
+
+/* Dark theme: separately chosen values, validated separately. Delete if the page is light-only. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --surface: {{#hex}}; --surface-raised: {{#hex}}; --surface-sunken: {{#hex}};
+    --ink: {{#hex}}; --ink-muted: {{#hex}}; --line: {{#hex}};
+    --accent: {{#hex}}; --accent-ink: {{#hex}};
+    --chart-neutral: {{#hex}}; --chart-2: {{#hex}};
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --dur-1: 0ms; --dur-2: 0ms; --dur-3: 150ms; --dur-4: 150ms; }
+}

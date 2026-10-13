@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.DS_Store
+dist/
+
+# Local-only: test runs, demo outputs, the archived skill, and machine-specific QA tooling
+test-run/
+test-run2/
+demo-arcade/
+examples/
+archive/
+tools/craft_qa.py

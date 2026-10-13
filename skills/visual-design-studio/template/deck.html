@@ -1,0 +1,317 @@
+<!doctype html>
+<!-- TEMPLATE: deck.html, a starter deck written to reference/deck-contract.md
+     Used by: visual-design-studio (presentations), copied to {{project_path}}/outputs/deck/deck.html and rewritten.
+     Its :root tokens come from DESIGN.md, so the deck matches the project's pages and documents.
+     The example content (a harbour water-quality review) shows every element type. Replace all of it.
+     Keep these: the :root tokens, the .slide frame CSS, inline geometry on every data-pptx element,
+     and the chart preview script. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Harbour Water Quality 2026</title>
+<style>
+/* Design tokens: the ONLY colors and fonts the slides may use. The converter reads this block. */
+:root {
+  --ink: #12343B;        /* dominant: titles, dark slides */
+  --paper: #FFFFFF;      /* light slide background */
+  --tide: #2C7A7B;       /* secondary: chart series 1, shapes */
+  --signal: #E9A23B;     /* accent: one highlight per slide, never body text on white */
+  --mist: #E4EEEE;       /* tint: cards, panels */
+  --slate: #4A5F63;      /* muted text: captions, sources */
+  --font-head: Cambria, Georgia, 'Times New Roman', serif;   /* converter uses the first family */
+  --font-body: Calibri, Carlito, 'Segoe UI', Arial, sans-serif;
+}
+/* Preview frame only. The converter ignores everything below except inline styles. */
+body { margin: 0; padding: 24px; background: #6B7478; display: flex; flex-direction: column; align-items: center; gap: 24px; }
+.slide { position: relative; width: 960px; height: 540px; overflow: hidden; flex: none; box-shadow: 0 2px 12px rgba(0,0,0,.35); }
+.slide > [data-pptx] { position: absolute; box-sizing: border-box; margin: 0; }
+.slide p, .slide ul, .slide ol, .slide h1, .slide h2, .slide h3 { margin: 0; font-size: inherit; font-weight: inherit; }
+.slide ul, .slide ol { padding-left: 1.2em; }
+.slide [data-pptx="shape"] { display: flex; flex-direction: column; }
+.slide table { border-collapse: collapse; }
+.slide td, .slide th { padding: 4px 8px; text-align: inherit; }
+.slide [data-pptx="chart"] svg { width: 100%; height: 100%; }
+.notes { display: none; }
+/* Present mode (press P or open deck.html#present): one slide at a time, with the deck's motion. */
+body.presenting { padding: 0; gap: 0; background: #000; height: 100vh; overflow: hidden; justify-content: center; }
+body.presenting .slide { display: none; position: absolute; top: 50%; left: 50%; box-shadow: none; transform-origin: center; }
+body.presenting .slide.current, body.presenting .slide.leaving { display: block; }
+.present-hint { position: fixed; right: 16px; bottom: 12px; font: 13px/1.4 system-ui, sans-serif; color: #fff; opacity: .7; }
+body.presenting .present-hint { display: none; }
+@media print { body { background: none; padding: 0; gap: 0; } .slide { box-shadow: none; page-break-after: always; } }
+</style>
+</head>
+<body data-deck-title="Harbour Water Quality 2026" data-mode="live">
+
+<!-- 1 · cover -->
+<section class="slide" data-layout="cover" style="background: var(--ink)">
+  <img data-pptx="image" id="cover-art" data-morph="sonar" data-build="0" data-anim="fade" data-duration="600" alt="Concentric sonar rings" style="left:520px; top:0px; width:440px; height:540px"
+       src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='440' height='540' viewBox='0 0 440 540'><g fill='none' stroke='%232C7A7B' stroke-width='2'><circle cx='440' cy='270' r='60'/><circle cx='440' cy='270' r='120'/><circle cx='440' cy='270' r='180'/><circle cx='440' cy='270' r='240'/><circle cx='440' cy='270' r='300'/><circle cx='440' cy='270' r='360'/></g><circle cx='440' cy='270' r='28' fill='%23E9A23B'/></svg>">
+  <div data-pptx="text" data-role="title" style="left:64px; top:96px; width:560px; height:220px; font-family:var(--font-head); font-size:60px; font-weight:700; line-height:1.05; color:var(--paper)">Harbour water is cleaner, but not everywhere</div>
+  <div data-pptx="text" data-role="subtitle" data-build="0" data-anim="float-up" data-duration="500" data-delay="200" style="left:64px; top:336px; width:480px; height:66px; font-family:var(--font-body); font-size:22px; line-height:1.3; color:var(--mist)">2026 monitoring review for the Port Environment Board</div>
+  <div data-pptx="text" data-role="caption" style="left:64px; top:456px; width:480px; height:28px; font-family:var(--font-body); font-size:16px; color:var(--mist)">Presented by the Water Quality Team, 12 October 2026</div>
+  <aside class="notes">Open with the headline: overall quality improved, but two inlets got worse. The ask comes at the end.</aside>
+</section>
+
+<!-- 2 · key numbers -->
+<section class="slide" data-layout="stats" data-transition="morph" style="background: var(--paper)">
+  <div data-pptx="text" data-role="title" style="left:56px; top:40px; width:848px; height:64px; font-family:var(--font-head); font-size:44px; font-weight:700; color:var(--ink)">Three numbers that matter this year</div>
+  <div data-pptx="shape" data-build="1" data-anim="float-up" style="left:56px; top:150px; width:264px; height:280px; background:var(--mist); border-radius:16px"></div>
+  <div data-pptx="shape" data-build="2" data-anim="float-up" style="left:348px; top:150px; width:264px; height:280px; background:var(--mist); border-radius:16px"></div>
+  <div data-pptx="shape" data-build="3" data-anim="float-up" style="left:640px; top:150px; width:264px; height:280px; background:var(--ink); border-radius:16px"></div>
+  <div data-pptx="text" data-role="stat" data-build="1" data-anim="float-up" data-delay="60" style="left:80px; top:176px; width:220px; height:108px; font-family:var(--font-head); font-size:80px; font-weight:700; color:var(--ink)">82%</div>
+  <div data-pptx="text" data-build="1" data-anim="float-up" data-delay="120" style="left:80px; top:290px; width:216px; height:120px; font-family:var(--font-body); font-size:20px; line-height:1.3; color:var(--ink)">of samples met the bathing-water standard, up from 71%</div>
+  <div data-pptx="text" data-role="stat" data-build="2" data-anim="float-up" data-delay="60" style="left:372px; top:176px; width:220px; height:108px; font-family:var(--font-head); font-size:80px; font-weight:700; color:var(--ink)">−34%</div>
+  <div data-pptx="text" data-build="2" data-anim="float-up" data-delay="120" style="left:372px; top:290px; width:216px; height:120px; font-family:var(--font-body); font-size:20px; line-height:1.3; color:var(--ink)">E. coli median across the outer harbour since 2024</div>
+  <div data-pptx="text" data-role="stat" data-build="3" data-anim="float-up" data-delay="60" style="left:664px; top:176px; width:220px; height:108px; font-family:var(--font-head); font-size:80px; font-weight:700; color:var(--signal)">2</div>
+  <div data-pptx="text" data-build="3" data-anim="float-up" data-delay="120" style="left:664px; top:290px; width:216px; height:120px; font-family:var(--font-body); font-size:20px; line-height:1.3; color:var(--paper)">inlets got worse: Mill Creek and Dock 7</div>
+  <img data-pptx="image" id="stats-motif" data-morph="sonar" alt="Concentric sonar rings" style="left:872px; top:432px; width:88px; height:108px"
+       src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='440' height='540' viewBox='0 0 440 540'><g fill='none' stroke='%232C7A7B' stroke-width='2'><circle cx='440' cy='270' r='60'/><circle cx='440' cy='270' r='120'/><circle cx='440' cy='270' r='180'/><circle cx='440' cy='270' r='240'/><circle cx='440' cy='270' r='300'/><circle cx='440' cy='270' r='360'/></g><circle cx='440' cy='270' r='28' fill='%23E9A23B'/></svg>">
+  <aside class="notes">The third card is dark on purpose: it is the problem we need the board to act on.</aside>
+</section>
+
+<!-- 3 · chart + takeaways -->
+<section class="slide" data-layout="chart" data-transition="fade" style="background: var(--paper)">
+  <div data-pptx="text" data-role="title" style="left:56px; top:40px; width:848px; height:64px; font-family:var(--font-head); font-size:44px; font-weight:700; color:var(--ink)">Compliance rose in four of six zones</div>
+  <div data-pptx="chart" id="zone-chart" data-build="1" data-anim="wipe-up" data-duration="500" style="left:56px; top:124px; width:560px; height:340px; font-family:var(--font-body); font-size:14px; color:var(--slate)"
+       data-chart='{"type":"column","categories":["Outer","Marina","Ferry","Beach","Mill Ck","Dock 7"],"series":[{"name":"2024","values":[0.74,0.70,0.68,0.77,0.66,0.69]},{"name":"2026","values":[0.91,0.86,0.83,0.88,0.58,0.61]}],"colors":["var(--mist)","var(--tide)"],"number_format":"0%","labels":false,"legend":true}'></div>
+  <div data-pptx="text" data-build="2" data-anim="fade" style="left:648px; top:140px; width:256px; height:300px; font-family:var(--font-body); font-size:20px; line-height:1.3; color:var(--ink)">
+    <p style="margin-bottom:14px"><b>Outer harbour and Marina</b> gained the most after the 2025 outfall upgrade.</p>
+    <p><b>Mill Creek and Dock 7</b> fell below 2024 levels, which matches the new construction runoff.</p>
+  </div>
+  <div data-pptx="text" data-role="source" style="left:56px; top:478px; width:560px; height:24px; font-family:var(--font-body); font-size:14px; color:var(--slate)">Source: Port monitoring programme, 1,240 samples, Jan–Sep each year</div>
+  <aside class="notes">Point at the last two pairs of bars. That is the whole story of the next slide.</aside>
+</section>
+
+<!-- 4 · section divider -->
+<section class="slide" data-layout="section" data-transition="fade" style="background: var(--tide)">
+  <div data-pptx="text" data-role="stat" style="left:56px; top:96px; width:300px; height:170px; font-family:var(--font-head); font-size:140px; font-weight:700; line-height:1; color:var(--paper)">02</div>
+  <div data-pptx="text" data-role="title" style="left:56px; top:280px; width:848px; height:76px; font-family:var(--font-head); font-size:52px; font-weight:700; color:var(--paper)">What is failing at the inlets</div>
+  <div data-pptx="text" style="left:56px; top:376px; width:640px; height:64px; font-family:var(--font-body); font-size:22px; line-height:1.3; color:var(--paper)">Two causes, both fixable before next summer</div>
+</section>
+
+<!-- 5 · comparison -->
+<section class="slide" data-layout="comparison" style="background: var(--paper)">
+  <div data-pptx="text" data-role="title" style="left:56px; top:40px; width:848px; height:64px; font-family:var(--font-head); font-size:44px; font-weight:700; color:var(--ink)">Each inlet has a different cause</div>
+  <div data-pptx="shape" style="left:56px; top:136px; width:410px; height:330px; background:var(--mist); border-radius:16px; padding:28px; font-family:var(--font-body); font-size:20px; line-height:1.3; color:var(--ink)">
+    <h3 style="font-family:var(--font-head); font-size:28px; margin-bottom:12px">Mill Creek</h3>
+    <ul>
+      <li style="margin-bottom:8px">Sediment from the Riverside build site</li>
+      <li style="margin-bottom:8px">Turbidity doubles after rain</li>
+      <li>Silt fences missing on two boundaries</li>
+    </ul>
+  </div>
+  <div data-pptx="shape" style="left:494px; top:136px; width:410px; height:330px; background:var(--ink); border-radius:16px; padding:28px; font-family:var(--font-body); font-size:20px; line-height:1.3; color:var(--paper)">
+    <h3 style="font-family:var(--font-head); font-size:28px; margin-bottom:12px; color:var(--signal)">Dock 7</h3>
+    <ul>
+      <li style="margin-bottom:8px">Grey-water discharge from moored vessels</li>
+      <li style="margin-bottom:8px">Spikes match weekend occupancy</li>
+      <li>No pump-out station within 2 km</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 6 · process -->
+<section class="slide" data-layout="process" style="background: var(--paper)">
+  <div data-pptx="text" data-role="title" style="left:56px; top:40px; width:848px; height:64px; font-family:var(--font-head); font-size:44px; font-weight:700; color:var(--ink)">Three steps fix both inlets by April</div>
+  <div data-pptx="shape" style="left:96px; top:236px; width:768px; height:4px; background:var(--mist)"></div>
+  <div data-pptx="shape" style="left:76px; top:198px; width:80px; height:80px; background:var(--tide); border-radius:50%; justify-content:center; font-family:var(--font-head); font-size:32px; font-weight:700; text-align:center; color:var(--paper)">1</div>
+  <div data-pptx="shape" style="left:440px; top:198px; width:80px; height:80px; background:var(--tide); border-radius:50%; justify-content:center; font-family:var(--font-head); font-size:32px; font-weight:700; text-align:center; color:var(--paper)">2</div>
+  <div data-pptx="shape" style="left:804px; top:198px; width:80px; height:80px; background:var(--signal); border-radius:50%; justify-content:center; font-family:var(--font-head); font-size:32px; font-weight:700; text-align:center; color:var(--ink)">3</div>
+  <div data-pptx="text" style="left:56px; top:300px; width:240px; height:140px; font-family:var(--font-body); font-size:20px; line-height:1.3; color:var(--ink)"><p style="font-weight:700; margin-bottom:6px">November</p><p>Enforce silt fences at Riverside</p></div>
+  <div data-pptx="text" style="left:360px; top:300px; width:240px; height:140px; font-family:var(--font-body); font-size:20px; line-height:1.3; text-align:center; color:var(--ink)"><p style="font-weight:700; margin-bottom:6px">January</p><p>Install a pump-out station at Dock 7</p></div>
+  <div data-pptx="text" style="left:664px; top:300px; width:240px; height:140px; font-family:var(--font-body); font-size:20px; line-height:1.3; text-align:right; color:var(--ink)"><p style="font-weight:700; margin-bottom:6px">April</p><p>Re-sample both inlets weekly</p></div>
+</section>
+
+<!-- 7 · table -->
+<section class="slide" data-layout="table" style="background: var(--paper)">
+  <div data-pptx="text" data-role="title" style="left:56px; top:40px; width:848px; height:64px; font-family:var(--font-head); font-size:44px; font-weight:700; color:var(--ink)">The ask: £420k across two budgets</div>
+  <table data-pptx="table" style="left:56px; top:140px; width:848px; height:260px; font-family:var(--font-body); font-size:20px; color:var(--ink); border-bottom:1px solid var(--mist)">
+    <colgroup><col style="width:380px"><col style="width:200px"><col style="width:140px"><col style="width:128px"></colgroup>
+    <tr style="height:52px"><th style="background:var(--ink); color:var(--paper)">Item</th><th style="background:var(--ink); color:var(--paper)">Budget</th><th style="background:var(--ink); color:var(--paper)">Cost</th><th style="background:var(--ink); color:var(--paper)">When</th></tr>
+    <tr style="height:52px"><td>Silt-fence enforcement</td><td>Planning</td><td>£40k</td><td>Q4 2026</td></tr>
+    <tr style="height:52px"><td>Dock 7 pump-out station</td><td>Port capital</td><td>£310k</td><td>Q1 2027</td></tr>
+    <tr style="height:52px"><td>Weekly inlet sampling</td><td>Environment</td><td>£70k</td><td>Q2 2027</td></tr>
+    <tr style="height:52px"><td style="font-weight:700">Total</td><td></td><td style="font-weight:700">£420k</td><td></td></tr>
+  </table>
+  <div data-pptx="text" data-role="caption" style="left:56px; top:420px; width:848px; height:56px; font-family:var(--font-body); font-size:16px; line-height:1.3; color:var(--slate)">Costs are supplier quotes from September 2026 and exclude VAT.</div>
+</section>
+
+<!-- 8 · closing -->
+<section class="slide" data-layout="closing" data-transition="fade" style="background: var(--ink)">
+  <div data-pptx="text" data-role="title" style="left:64px; top:80px; width:800px; height:180px; font-family:var(--font-head); font-size:52px; font-weight:700; line-height:1.1; color:var(--paper)">Approve the £420k today and both inlets recover by summer</div>
+  <div data-pptx="text" style="left:64px; top:290px; width:560px; height:150px; font-family:var(--font-body); font-size:22px; line-height:1.35; color:var(--mist)">
+    <ol>
+      <li style="margin-bottom:8px">Board approval: 14 October</li>
+      <li style="margin-bottom:8px">Procurement starts: 1 November</li>
+      <li>First re-sampling report: May 2027</li>
+    </ol>
+  </div>
+  <div data-pptx="shape" style="left:820px; top:400px; width:80px; height:80px; background:var(--signal); border-radius:50%"></div>
+</section>
+
+<script>
+/* Preview-only chart renderer: draws each data-chart as SVG so the HTML shows what the native
+   PowerPoint chart will contain. The converter ignores this script and builds native charts. */
+(function () {
+  var css = getComputedStyle(document.documentElement);
+  function color(c) { var m = /var\(--([\w-]+)\)/.exec(c); return m ? css.getPropertyValue('--' + m[1]).trim() : c; }
+  function el(tag, attrs, text) {
+    var n = document.createElementNS('http://www.w3.org/2000/svg', tag);
+    for (var k in attrs) n.setAttribute(k, attrs[k]);
+    if (text != null) n.textContent = text;
+    return n;
+  }
+  function fmt(v, f) {   // the Excel number format's decimals, %, and thousands separator
+    f = f || '0';
+    var pct = f.indexOf('%') > -1, m = /\.(0+)/.exec(f), d = m ? m[1].length : 0;
+    return (pct ? v * 100 : v).toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d,
+      useGrouping: f.indexOf(',') > -1 }) + (pct ? '%' : '');
+  }
+  document.querySelectorAll('[data-pptx="chart"]').forEach(function (box) {
+    var spec = JSON.parse(box.getAttribute('data-chart'));
+    var W = box.clientWidth, H = box.clientHeight, ink = getComputedStyle(box).color;
+    var fs = parseFloat(getComputedStyle(box).fontSize) || 14;
+    var svg = el('svg', { viewBox: '0 0 ' + W + ' ' + H, 'font-family': getComputedStyle(box).fontFamily, 'font-size': fs });
+    var colors = (spec.colors || []).map(color), series = spec.series, cats = spec.categories;
+    var top = spec.legend === false ? 8 : fs * 2.2, bottom = H - fs * 2, left = fs * 3, right = W - 8;
+    if (spec.legend !== false) series.forEach(function (s, i) {
+      svg.appendChild(el('rect', { x: left + i * 110, y: 4, width: fs, height: fs, rx: 3, fill: colors[i] }));
+      svg.appendChild(el('text', { x: left + i * 110 + fs * 1.4, y: fs + 2, fill: ink }, s.name));
+    });
+    if (spec.type === 'pie' || spec.type === 'doughnut') {
+      var vals = series[0].values, sum = vals.reduce(function (a, b) { return a + b; }, 0), a0 = -Math.PI / 2;
+      var cx = W / 2, cy = (top + bottom) / 2, r = Math.min(W, bottom - top) / 2 - 4;
+      vals.forEach(function (v, i) {
+        var a1 = a0 + v / sum * 2 * Math.PI, large = a1 - a0 > Math.PI ? 1 : 0;
+        var d = 'M' + cx + ',' + cy + 'L' + (cx + r * Math.cos(a0)) + ',' + (cy + r * Math.sin(a0)) +
+                'A' + r + ',' + r + ' 0 ' + large + ' 1 ' + (cx + r * Math.cos(a1)) + ',' + (cy + r * Math.sin(a1)) + 'Z';
+        svg.appendChild(el('path', { d: d, fill: colors[i % colors.length], stroke: '#fff', 'stroke-width': 2 }));
+        a0 = a1;
+      });
+      if (spec.type === 'doughnut') svg.appendChild(el('circle', { cx: cx, cy: cy, r: r * 0.55, fill: getComputedStyle(box.parentNode).backgroundColor }));
+      box.appendChild(svg); return;
+    }
+    var max = Math.max.apply(null, series.flatMap(function (s) { return s.values; })) * 1.1;
+    for (var g = 0; g <= 4; g++) {
+      var gy = bottom - (bottom - top) * g / 4;
+      svg.appendChild(el('line', { x1: left, x2: right, y1: gy, y2: gy, stroke: '#E5E7EB' }));
+      svg.appendChild(el('text', { x: left - 6, y: gy + fs / 3, 'text-anchor': 'end', fill: ink }, fmt(max * g / 4, spec.number_format)));
+    }
+    var band = (right - left) / cats.length;
+    cats.forEach(function (c, ci) {
+      svg.appendChild(el('text', { x: left + band * (ci + 0.5), y: H - 4, 'text-anchor': 'middle', fill: ink }, c));
+    });
+    if (spec.type === 'line') {
+      series.forEach(function (s, si) {
+        var pts = s.values.map(function (v, i) { return (left + band * (i + 0.5)) + ',' + (bottom - (bottom - top) * v / max); });
+        svg.appendChild(el('polyline', { points: pts.join(' '), fill: 'none', stroke: colors[si], 'stroke-width': 3 }));
+      });
+    } else {
+      var inner = band * 0.62, bw = inner / series.length;
+      var hl = spec.highlight === 'last' ? cats.length - 1 : spec.highlight;
+      series.forEach(function (s, si) {
+        s.values.forEach(function (v, i) {
+          var bh = (bottom - top) * v / max, x = left + band * i + (band - inner) / 2 + bw * si;
+          var lit = series.length === 1 && hl != null && i === hl;
+          svg.appendChild(el('rect', { x: x, y: bottom - bh, width: bw - 2, height: bh, rx: 3,
+            fill: lit ? color(spec.highlight_color || colors[si]) : colors[si] }));
+          if (spec.labels) svg.appendChild(el('text', { x: x + (bw - 2) / 2, y: bottom - bh - 6, 'text-anchor': 'middle', fill: ink,
+            'font-weight': lit ? 700 : 400 }, fmt(v, spec.number_format)));
+        });
+      });
+    }
+    box.appendChild(svg);
+  });
+})();
+</script>
+<div class="present-hint">Press P to present; arrow keys step through builds</div>
+<script>
+/* Preview-only presenter: replays data-transition / data-build / data-morph with the same timing the
+   converter writes into PowerPoint. Curves come from the ui-animation skill: enter = cubic-bezier(0.22,1,0.36,1).
+   Reduced motion: spatial travel becomes a plain fade; nothing is skipped. */
+(function () {
+  var EASE = 'cubic-bezier(0.22, 1, 0.36, 1)', MOVE = 'cubic-bezier(0.25, 1, 0.5, 1)';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var cur = 0, step = 0, on = false;
+  function fit() {
+    var k = Math.min(innerWidth / 960, innerHeight / 540);
+    slides.forEach(function (s) { s.style.transform = on ? 'translate(-50%,-50%) scale(' + k + ')' : ''; });
+  }
+  function groups(s) {
+    var g = {};
+    s.querySelectorAll('[data-build]').forEach(function (el) { (g[+el.dataset.build] = g[+el.dataset.build] || []).push(el); });
+    return Object.keys(g).map(Number).sort(function (a, b) { return a - b; }).map(function (k) { return { k: k, els: g[k] }; });
+  }
+  var FRAMES = {
+    appear: [{ opacity: 1 }, { opacity: 1 }],
+    fade: [{ opacity: 0 }, { opacity: 1 }],
+    'float-up': [{ opacity: 0, translate: '0 16px' }, { opacity: 1, translate: '0 0' }],
+    'wipe-up': [{ clipPath: 'inset(100% 0 0 0)' }, { clipPath: 'inset(0 0 0 0)' }],
+    'wipe-right': [{ clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0 0 0)' }]
+  };
+  function play(group) {
+    group.els.forEach(function (el, i) {
+      if (el.tagName === 'VIDEO') { if (!reduce) { if (el.currentTime) el.currentTime = 0; el.play().catch(function () {}); } return; }
+      var anim = el.dataset.anim || 'fade', dur = +(el.dataset.duration || 400);
+      var delay = el.dataset.delay != null ? +el.dataset.delay : i * 60;
+      el.style.visibility = 'visible';
+      el.animate(reduce && anim !== 'appear' ? FRAMES.fade : FRAMES[anim],
+        { duration: anim === 'appear' ? 1 : dur, delay: delay, easing: EASE, fill: 'backwards' });
+    });
+  }
+  function hideBuilds(s) { s.querySelectorAll('[data-build]:not(video)').forEach(function (el) { el.style.visibility = 'hidden'; }); }
+  function show(n, dir) {
+    var prev = slides[cur], next = slides[n], kind = next.dataset.transition || 'none';
+    var ms = +(next.dataset.transitionMs || (kind === 'morph' ? 800 : 350));
+    var rects = {};
+    prev.querySelectorAll('[data-morph]').forEach(function (el) { rects[el.dataset.morph] = el.getBoundingClientRect(); });
+    slides.forEach(function (s) { s.classList.remove('current', 'leaving'); });
+    next.classList.add('current');
+    hideBuilds(next);
+    document.querySelectorAll('video').forEach(function (v) { v.pause(); if (v.currentTime) v.currentTime = 0; });
+    if (!reduce) next.querySelectorAll('video[data-play="auto"]').forEach(function (v) { v.play().catch(function () {}); });
+    cur = n; step = 0;
+    if (dir > 0 && !reduce && kind === 'morph') {
+      next.querySelectorAll('[data-morph]').forEach(function (el) {
+        var a = rects[el.dataset.morph]; if (!a) return;
+        var b = el.getBoundingClientRect();
+        el.animate([{ transformOrigin: '0 0', transform: 'translate(' + (a.left - b.left) + 'px,' + (a.top - b.top) + 'px) scale(' + a.width / b.width + ',' + a.height / b.height + ')' },
+                    { transformOrigin: '0 0', transform: 'none' }], { duration: ms, easing: MOVE });
+      });
+    } else if (dir > 0 && kind === 'push' && !reduce) {
+      next.animate([{ translate: '100% 0' }, { translate: '0 0' }], { duration: ms, easing: MOVE, composite: 'add' });
+    } else if (dir > 0 && kind !== 'none') {
+      next.animate([{ opacity: 0 }, { opacity: 1 }], { duration: ms, easing: EASE });
+    }
+    var g = groups(next);
+    if (dir > 0 && g.length && g[0].k === 0) { setTimeout(function () { play(g[0]); }, kind === 'none' ? 0 : ms); step = 1; }
+    if (dir < 0) { next.querySelectorAll('[data-build]').forEach(function (el) { el.style.visibility = 'visible'; }); step = g.length; }
+  }
+  function forward() {
+    var g = groups(slides[cur]);
+    if (step < g.length) { play(g[step]); step++; } else if (cur < slides.length - 1) { show(cur + 1, 1); }
+  }
+  function back() { if (cur > 0) show(cur - 1, -1); }
+  function toggle() {
+    on = !on; document.body.classList.toggle('presenting', on); fit();
+    if (on) { show(cur, 1); } else {
+      slides.forEach(function (s) { s.classList.remove('current', 'leaving'); s.querySelectorAll('[data-build]').forEach(function (el) { el.style.visibility = ''; }); });
+    }
+  }
+  addEventListener('resize', fit);
+  addEventListener('keydown', function (e) {
+    if (e.key === 'p' || e.key === 'P') toggle();
+    else if (!on) return;
+    else if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); forward(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); back(); }
+    else if (e.key === 'Escape') toggle();
+  });
+  document.addEventListener('click', function () { if (on) forward(); });
+  if (location.hash === '#present') toggle();
+})();
+</script>
+</body>
+</html>

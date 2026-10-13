@@ -1,0 +1,76 @@
+<!doctype html>
+<!-- TEMPLATE: page.html, a single-file page skeleton.
+     Used by: visual-design-studio, step 4. Copy it to {{project_path}}/outputs/design/{{page}}.html.
+     Paste the filled template/tokens.css into the <style> block, then compose sections from
+     reference/layout-patterns.md. The accessibility floor (lang, title, viewport, skip link,
+     focus-visible, reduced motion, progressive-enhancement reveal) is already wired in: keep it. -->
+<html lang="{{en}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="{{surface hex}}">
+<title>{{Page title}}</title>
+<!-- Optional web fonts: the page must still look right if these fail to load (offline previews). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family={{Display+Family}}:wght@{{weights}}&family={{Body+Family}}:wght@{{weights}}&display=swap" rel="stylesheet">
+<style>
+/* 1. Paste the filled template/tokens.css here. */
+
+/* 2. Base */
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; background: var(--surface); color: var(--ink); font: 400 var(--step-0)/var(--leading-body) var(--font-body); overflow-x: hidden; }
+img, svg { display: block; max-width: 100%; height: auto; }
+figure { margin: 0; min-width: 0; }
+.wrap > *, [class*="grid"] > * { min-width: 0; }   /* grid/flex children may shrink: no phone overflow */
+h1, h2, h3 { font-family: var(--font-display); line-height: var(--leading-tight); margin: 0; text-wrap: balance; letter-spacing: -0.02em; }
+p { margin: 0; text-wrap: pretty; max-width: var(--measure); }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+.wrap { width: min(100% - 2 * var(--gutter), var(--container)); margin-inline: auto; }
+.skip { position: absolute; left: -999px; }
+.skip:focus { left: var(--gutter); top: var(--space-4); background: var(--accent); color: var(--accent-ink); padding: var(--space-2) var(--space-4); }
+section { padding-block: var(--space-section); }
+
+/* 3. Components: buttons, then one block per section */
+.btn { display: inline-flex; align-items: center; min-height: 48px; padding: 0 var(--space-5); border-radius: var(--radius-pill); background: var(--accent); color: var(--accent-ink); font-weight: 600; text-decoration: none; transition: transform var(--dur-2) var(--ease-out), background-color var(--dur-2) var(--ease-out); }
+.btn:active { transform: scale(0.98); }
+
+/* Charts from vds.py chart: on phones a wide chart scrolls inside its frame instead of shrinking its labels */
+.chart-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+@media (max-width: 640px) { .chart-scroll svg { min-width: 560px; } }
+
+/* Header: one line; on phones the header CTA hides (the hero carries the same action) */
+header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); min-height: 64px; }
+header.top .btn { white-space: nowrap; }
+@media (max-width: 600px) { header.top .btn { display: none; } }
+
+/* 4. Motion: content stays visible without JS and under reduced motion */
+.js .reveal { opacity: 0; transform: translateY(16px); transition: opacity var(--dur-4) var(--ease-out), transform var(--dur-4) var(--ease-out); transition-delay: var(--delay, 0ms); }
+.js .reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .js .reveal { opacity: 1; transform: none; transition: none; } }
+
+/* 5. Mobile collapse, declared per multi-column section */
+@media (max-width: 860px) { /* {{.hero .wrap { grid-template-columns: 1fr; }}} */ }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="wrap"><!-- {{brand mark + name}} <a class="btn" href="#">{{same CTA label as the hero}}</a> --></div></header>
+<main id="main">
+  <section class="hero"><!-- {{hero pattern from reference/layout-patterns.md}} --></section>
+  <!-- {{sections: at least 4 layout families, never the same family twice in a row}} -->
+  <!-- Charts: <figure class="chart-scroll">{{output of: python3 scripts/vds.py chart data.json chart.svg}}<figcaption>Source: …</figcaption></figure> -->
+</main>
+<footer><!-- {{footer}} --></footer>
+<script>
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+    document.documentElement.classList.add('js');
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -10% 0px' });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+  })();
+</script>
+</body>
+</html>
