@@ -87,13 +87,41 @@ The skill works like a design director:
 
 <sub>Copper Comet Arcade, a fictional seaside arcade. The skill avoided the usual neon look and took walnut cabinets, copper tokens and amber screens from the subject. The page and the deck share one DESIGN.md.</sub>
 
+### Examples bundled with the skill
+The skill copies from these working files when it builds. Every image below is a render of the file as it ships.
+
+**[A landing page](skills/visual-design-studio/examples/landing-night-train.html)** for Lowlight, a fictional sleeper train. Night blue with sodium-lamp amber, a drawn route line, a bento of cabins and a timeline of the night.
+
+![The Lowlight sleeper-train landing page: a night-blue hero reading "Fall asleep in Edinburgh. Wake up in Amsterdam." beside an illustrated train under a crescent moon, with the full page shown beside it](docs/images/example-landing.png)
+
+**[A print-ready report](skills/visual-design-studio/examples/report-urban-canopy.html)**: four A4 pages printed to PDF with `vds.py pdf`, with a cover, a summary spread, an evidence page and a table page.
+
+![Four A4 pages of the Urban Canopy Report 2026: a green cover with concentric rings, a summary with key figures, a bar chart page and a ruled table of recommendations](docs/images/example-report-pdf.png)
+
+**[The same report as Word](skills/visual-design-studio/examples/report-urban-canopy.md)**: Markdown with the design system's Office fonts and colours in the front matter, built by `vds.py docx`.
+
+![Three Word pages: a green cover band, a findings page with the key figure and a pull quote, and a ruled data table with a method note](docs/images/example-report-word.png)
+
+**[An Excel dashboard](skills/visual-design-studio/examples/dashboard-harbour.json)**: a JSON spec built by `vds.py xlsx` into KPI tiles, native charts and live table panels on a 12-column grid.
+
+![The harbour water-quality dashboard: four KPI tiles, a line chart of compliance by month, a zone table with data bars, a column chart comparing 2024 and 2026, and a text panel](docs/images/example-dashboard.png)
+
+**[A board deck](skills/visual-design-studio/template/deck.html)**: the deck template, converted by `vds.py deck` into native PowerPoint with charts, builds and transitions.
+
+![Six PowerPoint slides from the harbour deck: a dark teal cover, three key figures, a section divider, a comparison of two inlets, a three-step process and a closing slide with the ask](docs/images/example-deck.png)
+
+<sub>Lowlight, the Urban Canopy report and the harbour review are fictional. The Word, Excel and PowerPoint images come from a lightweight local viewer, so fine chart details (a single highlighted point, some number formats) can differ from Office.</sub>
+
 ### Low-poly 3D, on the page and in the deck
-![Five flat-shaded 3D scenes: a globe, a wind turbine, an arcade cabinet, an open parts box and a copper token](docs/images/lowpoly-scenes.png)
+**On pages:** [the motion example](skills/visual-design-studio/examples/motion-lowpoly.html) is a small canvas renderer in plain JavaScript, with no libraries. Loops get a pause button, reduced-motion settings get a still frame, and animation stops when it's scrolled off screen.
+
+![The low-poly motion example page: a spinning globe, an opening package, a wind turbine, a coin and an arcade cabinet, each with a caption naming its purpose and a Pause, Open or Flip button](docs/images/example-motion.png)
+
+**In decks:** PowerPoint can't run that JavaScript, so `vds.py lowpoly` renders the same scenes as an MP4, a GIF and a still poster image, using the deck's own colours. The deck embeds the video with native timing: loops start with the slide, and one-off moments play on a click.
+
+![Five flat-shaded 3D scenes in a copper palette: a globe, a wind turbine, an arcade cabinet, an open parts box and a copper token](docs/images/lowpoly-scenes.png)
 
 ![A cardboard box whose flaps fold open as a copper gem rises out of it](docs/images/lowpoly-package.gif)
-
-- **On pages:** a small canvas renderer in plain JavaScript, with no libraries. Loops get a pause button, reduced-motion settings get a still frame, and animation stops when it's scrolled off screen.
-- **In decks:** PowerPoint can't run that JavaScript, so `vds.py lowpoly` renders the same scenes as an MP4, a GIF and a still poster image, using the deck's own colours. The deck embeds the video with native timing: loops start with the slide, and one-off moments play on a click.
 
 ```bash
 python3 scripts/vds.py lowpoly cabinet assets/cabinet --tokens deck.html --size 720x900
