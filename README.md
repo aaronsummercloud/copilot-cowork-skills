@@ -52,3 +52,6 @@ custom-instructions.md      the Cowork Preferences snippet
 ```
 
 All example content in the skills (Brightwater, Copper Comet, Port Halden and others) is fictional.
+
+## License
+MIT. See `LICENSE`.
